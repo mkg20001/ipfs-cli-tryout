@@ -42,7 +42,7 @@ BrowserFS.configure({
   }
   term.console.clear()
   setImmediate(() => {
-    term.cmds.welcome(process, console)
+    term.cmds.welcome(process, term.console)
     term.launch()
   })
 })

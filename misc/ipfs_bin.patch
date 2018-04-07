@@ -1,5 +1,5 @@
 --- node_modules/ipfs/src/cli/bin.js	2018-04-06 21:11:11.869570296 +0200
-+++ ipfs_bin.js	2018-04-07 14:59:37.166529243 +0200
++++ ipfs_bin.js	2018-04-07 17:12:27.235381772 +0200
 @@ -1,18 +1,10 @@
 -#! /usr/bin/env node
 -
@@ -9,7 +9,7 @@
 -const updateNotifier = require('update-notifier')
 -const readPkgUp = require('read-pkg-up')
 -const utils = require('./utils')
-+const utils = require('ipfs/src/utils')
++const utils = require('ipfs/src/cli/utils')
  const print = utils.print
  
 -const pkg = readPkgUp.sync({cwd: __dirname}).pkg
@@ -38,9 +38,9 @@
 -const addCmd = require('./commands/files/add')
 -const catCmd = require('./commands/files/cat')
 -const getCmd = require('./commands/files/get')
-+const addCmd = require('ipfs/src/commands/files/add')
-+const catCmd = require('ipfs/src/commands/files/cat')
-+const getCmd = require('ipfs/src/commands/files/get')
++const addCmd = require('ipfs/src/cli/commands/files/add')
++const catCmd = require('ipfs/src/cli/commands/files/cat')
++const getCmd = require('ipfs/src/cli/commands/files/get')
  const aliases = [addCmd, catCmd, getCmd]
  aliases.forEach((alias) => {
    cli.command(alias.command, alias.describe, alias.builder, alias.handler)

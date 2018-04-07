@@ -1,5 +1,6 @@
 #!/bin/bash
 
+npx webpack
 rm -rf deploy
 mkdir deploy
 cp -r dist index.html deploy

@@ -8,6 +8,6 @@ Try the js-ipfs cli in your browser!
 
 First prepare the shims and cli by running `bash prepare.sh`
 
-Now run `npx webpack` to re-generate the assets
+Now run `npm run watch` to watch the assets and re-build the bundle on every change
 
 That's it!

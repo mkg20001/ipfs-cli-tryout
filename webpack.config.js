@@ -12,7 +12,8 @@ module.exports = {
       'bfsGlobal': require.resolve('browserfs'),
       // Just use the upstream (github.com/nodejs/nodejs) version as shim (run nodepull.sh to generate)
       'readline': require.resolve('./node/lib/readline.js'),
-      'console': require.resolve('./node/lib/console.js')
+      'console': require.resolve('./node/lib/console.js'),
+      'os-locale': require.resolve('./empty.js')
     }
   },
   // REQUIRED to avoid issue "Uncaught TypeError: BrowserFS.BFSRequire is not a function"
