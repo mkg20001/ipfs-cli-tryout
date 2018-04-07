@@ -8,6 +8,6 @@ Try the js-ipfs cli in your browser!
 
 First prepare the shims and cli by running `bash prepare.sh`
 
-Now run `npm run watch` to watch the assets and re-build the bundle on every change
+Now run `npm start` to watch the assets and re-build the bundle on every change
 
 That's it!

@@ -1,3 +1,5 @@
+'use strict'
+
 const webpack = require('webpack')
 
 module.exports = {
@@ -39,6 +41,5 @@ module.exports = {
     process: false,
     Buffer: false
   },
-  mode: 'development',
   entry: './src'
 }

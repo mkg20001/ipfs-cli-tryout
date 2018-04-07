@@ -18,6 +18,8 @@ const term = new Terminal({
   }
 })
 
+require('colors')
+
 console.log(term)
 
 Object.keys(console).forEach(k => {
@@ -48,3 +50,8 @@ BrowserFS.configure({
     term.launch()
   })
 })
+
+window.onerror = function(message, source, lineno, colno, error) {
+  console.error(message)
+  console.error(error.stack.red.bold)
+}
