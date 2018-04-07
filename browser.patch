@@ -1,0 +1,47 @@
+diff --git a/lib/console.js b/lib/console.js
+index d0f7e61..16b8ca6 100644
+--- a/lib/console.js
++++ b/lib/console.js
+@@ -202,7 +202,7 @@ Console.prototype.clear = function clear() {
+   if (this._stdout.isTTY) {
+     // The require is here intentionally to avoid readline being
+     // required too early when console is first loaded.
+-    const { cursorTo, clearScreenDown } = require('readline');
++    const { cursorTo, clearScreenDown } = require('./readline');
+     cursorTo(this._stdout, 0, 0);
+     clearScreenDown(this._stdout);
+   }
+diff --git a/lib/internal/readline.js b/lib/internal/readline.js
+index b15ed49..8f2189a 100644
+--- a/lib/internal/readline.js
++++ b/lib/internal/readline.js
+@@ -28,7 +28,7 @@ CSI.kClearToEnd = CSI`0K`;
+ CSI.kClearLine = CSI`2K`;
+ CSI.kClearScreenDown = CSI`0J`;
+ 
+-if (process.binding('config').hasIntl) {
++if (false) {
+   const icu = process.binding('icu');
+   getStringWidth = function getStringWidth(str, options) {
+     options = options || {};
+diff --git a/lib/readline.js b/lib/readline.js
+index fa9cc188..70f4708 100644
+--- a/lib/readline.js
++++ b/lib/readline.js
+@@ -28,7 +28,6 @@
+ 'use strict';
+ 
+ const { debug, inherits } = require('util');
+-const { Buffer } = require('buffer');
+ const EventEmitter = require('events');
+ const { StringDecoder } = require('string_decoder');
+ const {
+@@ -47,7 +46,7 @@ const {
+   kClearScreenDown
+ } = CSI;
+ 
+-const { now } = process.binding('timer_wrap').Timer;
++const { now } = Date;
+ 
+ const kHistorySize = 30;
+ const kMincrlfDelay = 100;
