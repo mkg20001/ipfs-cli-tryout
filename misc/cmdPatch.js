@@ -7,7 +7,7 @@ let id = 0
 let getId = () => pref + id++
 
 // self.command = function (cmd (command), description, builder, handler, middlewares) {
-const template = (p, id) => `.command(${id}.command, ${id}.description, ${id}.builder, ${id}.handler, ${id}.middlewares)\n`
+const template = (p, id) => `.command(${id}.command, ${id}.describe || ${id}.description, ${id}.builder || _builderNOOP, ${id}.handler, ${id}.middlewares)\n`
 const templateH = (p, id) => `const ${id} = require('${p}')`
 
 
@@ -40,7 +40,7 @@ function replace(P, D) {
     })
     return out
   })
-  if (define.length) c = c.replace("'use strict'", "'use strict'\n" + define.map(a => templateH(...a)).join('\n') + '\n')
+  if (define.length) c = c.replace("'use strict'", "'use strict'\nconst _builderNOOP = y => y\n" + define.map(a => templateH(...a)).join('\n') + '\n')
   console.log('[%s]: Patched!', path.relative(main, P))
   fs.writeFileSync(out, c)
 }
