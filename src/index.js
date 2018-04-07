@@ -21,13 +21,14 @@ const term = new Terminal({
 console.log(term)
 
 Object.keys(console).forEach(k => {
-  const orig = console[k].bind(console)
+  const orig = console[k].bind ? console[k].bind(console) : console[k]
   const fake = term.console[k] ? term.console[k].bind(term.console) : false
   delete console[k]
   console[k] = (...a) => {
     if (fake) fake(...a)
     return orig(...a)
   }
+  console[k]._ = orig
 })
 
 console.log('Loading...')

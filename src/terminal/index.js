@@ -86,7 +86,7 @@ class Terminal {
       }
       done_()
     }
-    const e = msg => f.run((process, console, done) => {
+    const e = msg => f.run((process, _, done) => {
       console.error(msg)
       done()
     })
