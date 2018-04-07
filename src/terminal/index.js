@@ -48,7 +48,7 @@ if (expand(parse('$HI$HELLO'), {HI: 'HELLO', HELLO: 'WORLD'}).commands[0].name.t
 
 class Terminal {
   constructor (opt) {
-    this.opt = opt
+    this.opt = opt || {}
 
     this.tty = new TTY(opt.el, opt.xterm)
 
@@ -86,7 +86,7 @@ class Terminal {
       }
       done_()
     }
-    const e = msg => f.run((process, _, done) => {
+    const e = msg => f.run((process, _console, done) => {
       console.error(msg)
       done()
     })

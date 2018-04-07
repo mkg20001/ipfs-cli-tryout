@@ -6,4 +6,5 @@ node
 dist
 NOTES*
 ipfs_bin.js
+ipfs_bin_patched.js
 deploy

@@ -14,7 +14,7 @@ const term = new Terminal({
       console.log('Hello and welcome to the interactive IPFS demo!\nYou can type ipfs commands here\n\nStart with:\n  $ ipfs init')
       process.exit(0)
     },
-    ipfs: require('../ipfs_bin')
+    ipfs: require('../ipfs_bin_patched')
   }
 })
 

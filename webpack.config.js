@@ -13,7 +13,14 @@ module.exports = {
       // Just use the upstream (github.com/nodejs/nodejs) version as shim (run nodepull.sh to generate)
       'readline': require.resolve('./node/lib/readline.js'),
       'console': require.resolve('./node/lib/console.js'),
-      'os-locale': require.resolve('./empty.js')
+      // Disable
+      'os-locale': require.resolve('./empty.js'),
+      'dns': require.resolve('./empty.js'),
+      'child_process': require.resolve('./empty.js'),
+      'cluster': require.resolve('./empty.js'),
+      'hapi': require.resolve('./empty.js'),
+      // We only need .isIPv6 and .isIPv4, shim that
+      'net': require.resolve('./net_shim.js'),
     }
   },
   // REQUIRED to avoid issue "Uncaught TypeError: BrowserFS.BFSRequire is not a function"
