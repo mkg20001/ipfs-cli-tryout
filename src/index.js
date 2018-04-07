@@ -42,6 +42,7 @@ BrowserFS.configure({
   }
   term.console.clear()
   setImmediate(() => {
+    console.log('WIP! Please help with development @ https://github.com/mkg20001/ipfs-cli-tryout !')
     term.cmds.welcome(process, term.console)
     term.launch()
   })
