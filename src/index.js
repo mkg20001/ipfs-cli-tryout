@@ -2,7 +2,7 @@
 
 const $ = require('jquery')
 $('#out').html('')
-$('body').toggleClass('fake-term')
+$('body').toggleClass('loading')
 
 const Terminal = require('./terminal')
 
@@ -22,8 +22,6 @@ const term = new Terminal({
 })
 
 require('colors')
-
-console.log(term)
 
 Object.keys(console).forEach(k => {
   const orig = console[k].bind ? console[k].bind(console) : console[k]
