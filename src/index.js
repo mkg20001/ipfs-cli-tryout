@@ -1,6 +1,9 @@
 'use strict'
 
-//BrowserFS.install(window)
+const $ = require('jquery')
+$('#out').html('')
+$('body').toggleClass('fake-term')
+
 const Terminal = require('./terminal')
 
 const term = new Terminal({

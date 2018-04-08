@@ -3,7 +3,7 @@
 npm run build
 rm -rf deploy
 mkdir deploy
-cp -r dist index.html deploy
+cp dist/main.js index.html deploy
 mkdir -p deploy/node_modules/xterm/dist
 cp node_modules/xterm/dist/xterm.css deploy/node_modules/xterm/dist/xterm.css
 HASH=$(ipfs add -Qr deploy)
