@@ -1,5 +1,5 @@
---- node_modules/ipfs/src/cli/bin.js	2018-04-06 21:11:11.869570296 +0200
-+++ ipfs_bin.js	2018-04-07 17:12:27.235381772 +0200
+--- node_modules/ipfs/src/cli/bin.js	2018-04-07 20:51:24.515812349 +0200
++++ ipfs_bin.js	2018-04-08 12:51:32.489952516 +0200
 @@ -1,18 +1,10 @@
 -#! /usr/bin/env node
 -
@@ -29,7 +29,7 @@
 +      return process.exit(err)
      }
      yargs.showHelp()
-+    process.exit()
++    process.exit(0)
    })
  
  // NOTE: This creates an alias of
@@ -44,7 +44,35 @@
  const aliases = [addCmd, catCmd, getCmd]
  aliases.forEach((alias) => {
    cli.command(alias.command, alias.describe, alias.builder, alias.handler)
-@@ -81,3 +74,5 @@
+@@ -56,16 +49,18 @@
+     .strict(false)
+     .completion()
+     .parse(args)
++  process.exit(0) // do that in background
+ } else {
+   // here we have to make a separate yargs instance with
+   // only the `api` option because we need this before doing
+   // the final yargs parse where the command handler is invoked..
+   yargs().option('api').parse(process.argv, (err, argv, output) => {
+     if (err) {
++      process.exit(err)
+       throw err
+     }
+     utils.getIPFS(argv, (err, ipfs, cleanup) => {
+-      if (err) { throw err }
++      if (err) { process.exit(err); throw err }
+ 
+       cli
+         .help()
+@@ -75,9 +70,12 @@
+           if (output) { print(output) }
+ 
+           cleanup(() => {
+-            if (err) { throw err }
++            if (err) { process.exit(err); throw err }
++            process.exit(0)
+           })
+         })
      })
    })
  }
